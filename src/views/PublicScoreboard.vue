@@ -1,7 +1,27 @@
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
+import api from "@/assets/axios";
 import LeagueCard from '@/components/LeagueCard.vue';
 import LiveMatchCard from '@/components/LiveMatchCard.vue';
 import UpcomingMatchCard from '@/components/UpcomingMatchCard.vue';
+
+const liveMatches = ref([]);
+const upcomingMatches = ref([]);
+const leagues = ref([]);
+
+const fetchData = async () => {
+    try {
+      const response = await api.get("/dashboard");
+      console.log(response.data);
+      liveMatches.value = response.data.live_matches;
+      upcomingMatches.value = response.data.upcoming_matches;
+      leagues.value = response.data.leagues;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+onMounted(fetchData);
 
 </script>
 
@@ -43,7 +63,7 @@ import UpcomingMatchCard from '@/components/UpcomingMatchCard.vue';
                 <h2 class="text-2xl font-bold text-gray-800">Leagues</h2>
             </div>
             <div class="grid gap-4 md:grid-cols-3">
-              <LeagueCard />
+              <LeagueCard v-for="league in leagues" :key="league.id" :league="league"/>
             </div>
         </div>
     </div>
