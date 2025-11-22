@@ -1,5 +1,5 @@
 <script setup>
-import api from '@/assets/axios';
+import api from '@/plugins/axios';
 import LeagueMainCard from '@/components/LeagueMainCard.vue';
 import RecentMatch from '@/components/RecentMatch.vue';
 import TeamStanding from '@/components/TeamStanding.vue';

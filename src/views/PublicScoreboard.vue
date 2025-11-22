@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import api from "@/assets/axios";
+import api from "@/plugins/axios";
 import LeagueCard from '@/components/LeagueCard.vue';
 import LiveMatchCard from '@/components/LiveMatchCard.vue';
 import UpcomingMatchCard from '@/components/UpcomingMatchCard.vue';
