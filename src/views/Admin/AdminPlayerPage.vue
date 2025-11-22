@@ -1,6 +1,7 @@
 <script setup>
 import CreatePlayerModal from '@/components/Admin/CreatePlayerModal.vue';
 import DeletePlayerModal from '@/components/Admin/DeletePlayerModal.vue';
+import EditPlayerModal from '@/components/Admin/EditPlayerModal.vue';
 import api from '@/plugins/axios';
 import { onMounted, ref } from 'vue';
 
@@ -18,8 +19,8 @@ const reloadData = () => {
 const showEditModal = ref(false);
 const selectedPlayerId = ref(null);
 
-const editPlayer = (slug) => {
-  selectedPlayerId.value = slug;
+const editPlayer = (id) => {
+  selectedPlayerId.value = id;
   showEditModal.value = true;
 };
 
@@ -55,11 +56,11 @@ onMounted(fetchData);
             <td class="px-6 py-4">
               <img class="w-10 h-10 object-cover rounded" :src="player.image" alt="Logo" />
             </td>
-            <td class="px-6 py-4">{{ player.team.name ?? 'N/A' }}</td>
+            <td class="px-6 py-4">{{ player?.team?.name ?? 'N/A' }}</td>
             <td class="px-6 py-4">{{ player.total_goals ?? 'N/A' }}</td>
             <td class="px-6 py-4">{{ player.total_fouls ?? 'N/A'}}</td>
             <td class="px-6 py-4 flex gap-3 justify-center">
-              <button @click="editPlayer(league.slug)" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs shadow hover:bg-blue-700 transition">Edit</button>
+              <button @click="editPlayer(player.id)" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs shadow hover:bg-blue-700 transition">Edit</button>
 
               <DeletePlayerModal :playerId="player.id" @updated="reloadData" />
             </td>

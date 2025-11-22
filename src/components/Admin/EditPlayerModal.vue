@@ -6,7 +6,7 @@ import { toast } from "vue-sonner";
 
 const props = defineProps({
   show: Boolean,
-  playerId: String,
+  playerId: Number,
 });
 
 const emit = defineEmits(["close", "updated"]);
