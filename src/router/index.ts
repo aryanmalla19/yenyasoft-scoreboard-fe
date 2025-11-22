@@ -6,6 +6,8 @@ import LeaguePage from '@/views/LeaguePage.vue';
 import Dashboard from '@/views/Admin/Dashboard.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
 import AdminLeaguePage from '@/views/Admin/AdminLeaguePage.vue';
+import AdminTeamPage from '@/views/Admin/AdminTeamPage.vue';
+import AdminPlayerPage from '@/views/Admin/AdminPlayerPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -45,6 +47,22 @@ const router = createRouter({
       meta: { requiresAuth: true},
       children: [
         { path: '', name:'AdminLeague', component: AdminLeaguePage}
+      ]
+    },
+    {
+      path: '/admin/leagues/:slug/teams',
+      component: AdminLayout,
+      meta: { requiresAuth: true},
+      children: [
+        { path: '', name:'AdminTeam', component: AdminTeamPage}
+      ]
+    },
+    {
+      path: '/admin/players',
+      component: AdminLayout,
+      meta: { requiresAuth: true},
+      children: [
+        { path: '', name:'AdminPlayer', component: AdminPlayerPage}
       ]
     }
   ]

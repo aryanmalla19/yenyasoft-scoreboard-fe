@@ -77,9 +77,11 @@ onMounted(fetchData);
               </span>
             </td>
             <td class="px-6 py-4 flex gap-3 justify-center">
-              <button @click="editLeague(league.slug)" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs shadow hover:bg-blue-700 transition">Edit</button>
+                <a :href="'/admin/leagues/'+league.slug+'/teams'" class="px-3 py-1.5 bg-pink-600 text-white rounded-lg text-xs shadow hover:bg-pink-700 transition">Teams</a>
 
-              <DeleteLeagueModal :leagueSlug="league.slug" @updated="reloadData" />
+                <button @click="editLeague(league.slug)" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs shadow hover:bg-blue-700 transition">Edit</button>
+
+                <DeleteLeagueModal :leagueSlug="league.slug" @updated="reloadData" />
             </td>
           </tr>
         </tbody>

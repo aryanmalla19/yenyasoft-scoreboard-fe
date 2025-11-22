@@ -42,7 +42,7 @@ const submitForm = async () => {
     console.log("Created:", response.data);
     emit("updated");
     showCreateModal.value = false;
-    
+
     toast.success("Successfully created League " + form.value.name);
 
     // Reset form
@@ -56,6 +56,7 @@ const submitForm = async () => {
     };
 
   } catch (error) {
+    toast.error(error.response.data.message ?? 'Some error occurred');
     console.error("Error creating league:", error);
   }
 };
