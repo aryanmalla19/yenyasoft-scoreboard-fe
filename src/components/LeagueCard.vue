@@ -43,6 +43,6 @@
             <div class="bg-blue-600 h-2 rounded-full transition-all" style="width: 43%"></div>
         </div>
 
-        <a href="/league/1" class="text-blue-600 text-sm font-medium hover:text-blue-800 block text-center pt-3 border-t">View League →</a>
+        <a :href="'leagues/'+league.slug" class="text-blue-600 text-sm font-medium hover:text-blue-800 block text-center pt-3 border-t">View League →</a>
     </div>
 </template>
