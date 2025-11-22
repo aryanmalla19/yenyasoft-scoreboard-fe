@@ -14,7 +14,7 @@
             <span class="text-xs px-3 py-1 rounded-full text-white bg-green-500">Active</span>
         </div>
         <div class="flex gap-2 items-start justify-between mb-3">
-            <img class="w-8" src="/man-city-logo.png" alt="league_logo">
+            <img class="w-8" :src="league.logo" alt="league_logo">
             <h3 class="font-bold text-lg text-gray-800 flex-1">{{ league.name }}</h3>
         </div>
         
@@ -29,13 +29,13 @@
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
                 </svg>
-                <span>8 Teams</span>
+                <span>{{ league.total_teams }} Teams</span>
             </div>
             <div class="flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                 </svg>
-                <span>56 Matches Played</span>
+                <span>{{ league.total_matches_played }} Matches Played</span>
             </div>
         </div>
 

@@ -34,9 +34,12 @@ onMounted(fetchData);
                 <h2 class="text-2xl font-bold text-gray-800">Live Matches</h2>
             </div>
             <div class="grid gap-4 md:grid-cols-3">
-                <LiveMatchCard />
-                <LiveMatchCard />
-                <LiveMatchCard />
+                <template v-if="liveMatches.length">
+                    <LiveMatchCard v-for="match in liveMatches" :match="match" :key="match.id" />
+                </template>
+                <template v-else>
+                    <span class="text-gray-600 text-sm">No Live Matches are happening right now</span>
+                </template>
             </div>
         </div>
 
@@ -49,9 +52,15 @@ onMounted(fetchData);
                 <h2 class="text-2xl font-bold text-gray-800">Upcoming Matches</h2>
             </div>
             <div class="grid gap-4 md:grid-cols-2">
-              <UpcomingMatchCard />
-              <UpcomingMatchCard />
+            <template v-if="upcomingMatches.length">
+                <UpcomingMatchCard v-for="match in upcomingMatches" :key="match.id" :match="match" />
+            </template>
+
+            <template v-else>
+                <span class="text-gray-600 text-sm">No Upcoming Matches are available</span>
+            </template>
             </div>
+
         </div>
 
         <!-- Leagues Section -->
@@ -63,7 +72,13 @@ onMounted(fetchData);
                 <h2 class="text-2xl font-bold text-gray-800">Leagues</h2>
             </div>
             <div class="grid gap-4 md:grid-cols-3">
-              <LeagueCard v-for="league in leagues" :key="league.id" :league="league"/>
+                <template v-if="leagues.length">
+                    <LeagueCard v-for="league in leagues" :key="league.id" :league="league"/>
+                </template>
+
+                <template v-else>
+                    <span class="text-gray-600 text-sm">No Leagues available</span>
+                </template>
             </div>
         </div>
     </div>
