@@ -15,7 +15,7 @@ const router = createRouter({
       ]
     },
     {
-      path: '/match/live',
+      path: '/match/live/:id',
       component: PublicLayout,
       children: [
         { path: '', name:'LiveMatch', component: LiveMatch}

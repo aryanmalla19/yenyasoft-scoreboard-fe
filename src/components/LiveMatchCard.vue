@@ -23,7 +23,7 @@
                 <div class="text-sm font-semibold text-red-500 mt-1">65:23</div>
             </div>
             <div class="flex-1 flex flex-col items-center">
-                <img class="w-[100px]" :src="match.awaya_team.logo" alt="club_logo">
+                <img class="w-[100px]" :src="match.away_team.logo" alt="club_logo">
                 <div class="text-xs mt-1">{{  match.away_team.name }}</div>
             </div>
         </div>

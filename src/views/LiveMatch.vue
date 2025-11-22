@@ -1,22 +1,50 @@
+<script setup>
+import api from '@/assets/axios';
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const homeTeam = ref({});
+const awayTeam = ref({});
+const match = ref({});
+const events = ref([]);
+const league = ref({});
+
+const fetchData = async () => {
+  const route = useRoute();
+  const id = route.params.id;
+  const response = await api.get('/matches/' + id);
+  const data = response.data.data;
+  console.log(data);
+
+  match.value = data;
+  homeTeam.value = data.home_team;
+  awayTeam.value = data.away_team;
+  events.value = data.events;
+  league.value = data.league;
+}
+
+onMounted(fetchData);
+</script>
+
 <template>
   <div>
     <header class="py-3">
       <div class="container mx-auto px-4 text-center">
-        <h1 class="text-right text-bold">Premier League</h1>
-        <p class="text-grey-600 text-right text-sm mt-2 opacity-90">Date: November 21, 2025</p>
+        <h1 class="text-right text-bold">{{ league.name }}</h1>
+        <p class="text-grey-600 text-right text-sm mt-2 opacity-90">Date: {{ match.start_time }}</p>
       </div>
     </header>
 
     <section class="container mx-auto px-4 pb-10">
       <div class="flex justify-center items-center space-x-12">
         <div class="text-center">
-          <h2 class="text-lg">Manchester United</h2>
-          <img src="/man-city-logo.png" alt="Manchester United Logo" class="mx-auto w-36 h-36 object-contain">
+          <h2 class="text-lg">{{ homeTeam.name }}</h2>
+          <img :src="homeTeam.logo" alt="Manchester United Logo" class="mx-auto w-36 h-36 object-contain">
         </div>
         <div class="text-3xl font-extrabold text-gray-800">2 - 1</div>
         <div class="text-center">
-          <h2 class="text-lg">Liverpool</h2>
-          <img src="/man-city-logo.png" alt="Liverpool Logo" class="mx-auto w-36 h-36 object-contain">
+          <h2 class="text-lg">{{ awayTeam.name }}</h2>
+          <img :src="awayTeam.logo" alt="Liverpool Logo" class="mx-auto w-36 h-36 object-contain">
         </div>
       </div>
     </section>

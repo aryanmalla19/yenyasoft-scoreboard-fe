@@ -11,7 +11,7 @@ import TeamStandingRow from './TeamStandingRow.vue';
 </script>
 
 <template>
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8 animate-fadeIn">
+    <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-8 animate-fadeIn">
         <div class="bg-gradient-to-r from-blue-950 to-blue-800 px-6 py-4">
             <h2 class="text-2xl font-bold text-white flex items-center gap-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +37,7 @@ import TeamStandingRow from './TeamStandingRow.vue';
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <TeamStandingRow v-for="team in teams"/>
+                        <TeamStandingRow v-for="team in teams" :team="team"/>
                     </tbody>
                 </table>
             </div>

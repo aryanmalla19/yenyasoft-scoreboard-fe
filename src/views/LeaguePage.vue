@@ -17,7 +17,7 @@ const fetchData = async (slug) => {
         const response = await api.get('/leagues/'+slug);
         console.log(response.data.data);
         league.value = response.data.data;
-        standings.value = [];
+        standings.value = response.data.data.teams;
         recentMatches.value = league.matches;
     }catch(error){
         console.log(error);
@@ -29,7 +29,7 @@ onMounted(fetchData);
 <template>
     <div class="container mx-auto px-4">
         <LeagueMainCard :league="league"/>
-        <TeamStanding />
+        <TeamStanding :teams="standings" />
         <RecentMatch :matches="recentMatches"/>
     </div>
 </template>
