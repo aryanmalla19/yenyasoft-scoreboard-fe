@@ -33,11 +33,22 @@ const router = createRouter({
     {
       path: '/admin/dashboard',
       component: AdminLayout,
+      meta: { requiresAuth: true},
       children: [
         { path: '', name:'AdminDashboard', component: Dashboard}
       ]
     }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+
+  if(to.meta.requiresAuth && !token){
+    return next('/');
+  }
+
+  next();
 })
 
 export default router
