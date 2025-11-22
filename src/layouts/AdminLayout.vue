@@ -10,7 +10,7 @@ import Navbar from '@/components/Admin/Navbar.vue';
     <div class="flex-1 flex flex-col overflow-hidden">
         <Navbar/>
 
-        <main class="flex-1 pb-20 overflow-y-auto bg-gray-50 p-8">
+        <main class="flex-1 pb-20 overflow-y-auto bg-gray-50 p-6">
           <router-view />
         </main>
     </div>

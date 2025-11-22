@@ -5,6 +5,7 @@ import LiveMatch from '@/views/LiveMatch.vue';
 import LeaguePage from '@/views/LeaguePage.vue';
 import Dashboard from '@/views/Admin/Dashboard.vue';
 import AdminLayout from '@/layouts/AdminLayout.vue';
+import AdminLeaguePage from '@/views/Admin/AdminLeaguePage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,14 @@ const router = createRouter({
       meta: { requiresAuth: true},
       children: [
         { path: '', name:'AdminDashboard', component: Dashboard}
+      ]
+    },
+    {
+      path: '/admin/leagues',
+      component: AdminLayout,
+      meta: { requiresAuth: true},
+      children: [
+        { path: '', name:'AdminLeague', component: AdminLeaguePage}
       ]
     }
   ]
