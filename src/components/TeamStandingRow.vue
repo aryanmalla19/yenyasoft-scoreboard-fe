@@ -21,7 +21,7 @@ const props = defineProps({
                 </div>
                 <div>
                     <div class="font-bold text-gray-900 text-lg">{{ team.name }}</div>
-                    <a :href="'/team/'+team.slug" class="text-xs text-blue-600 hover:text-blue-800 font-medium">View Details →</a>
+                    <!-- <a :href="'/team/'+team.slug" class="text-xs text-blue-600 hover:text-blue-800 font-medium">View Details →</a> -->
                 </div>
             </div>
         </td>
