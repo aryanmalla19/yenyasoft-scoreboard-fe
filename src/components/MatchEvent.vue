@@ -4,35 +4,21 @@ import MatchEventCard from './MatchEventCard.vue';
 const props = defineProps({
     events: {
         type: Array,
-        require: false,
-        default: [],
+        required: false,
+        default: () => [],
     }
 })
+
+
 </script>
 
 <template>
     <section class="container mx-auto px-4 py-2">
       <h2 class="text-xl font-bold text-center mb-8">Match Events</h2>
       <div class="event-timeline max-w-4xl mx-auto">
-        <MatchEventCard v-for="event in events" :event="event" />
-        <div class="event-item right">
-          <div class="event-content text-left group">
-            <p class="font-semibold text-lg">45' ⚽ Goal</p>
-            <p class="text-gray-700">Mohamed Salah (Liverpool)</p>
-          </div>
-        </div>
-        <div class="event-item left">
-          <div class="event-content text-right group">
-            <p class="font-semibold text-lg">60' ⚽ Goal</p>
-            <p class="text-gray-700">Marcus Rashford (Manchester United)</p>
-          </div>
-        </div>
-        <div class="event-item right">
-          <div class="event-content text-left bg-red-50 group">
-            <p class="font-semibold text-lg text-red-600">80' 🟥 Red Card</p>
-            <p class="text-gray-700">Virgil van Dijk (Liverpool)</p>
-          </div>
-        </div>
+        <template v-if="events?.length">
+          <MatchEventCard v-for="event in events" :event="event" />
+        </template>
       </div>
     </section>
 </template>

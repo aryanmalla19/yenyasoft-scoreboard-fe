@@ -1,8 +1,9 @@
 <script setup>
 import api from '@/plugins/axios';
 import MatchEvent from '@/components/MatchEvent.vue';
-import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import echo from '@/plugins/echo';
+import { onMounted, ref, watch } from 'vue';
 
 const homeTeam = ref({});
 const awayTeam = ref({});
@@ -10,9 +11,13 @@ const match = ref({});
 const events = ref([]);
 const league = ref({});
 
+let homeScore = ref(0);
+let awayScore = ref(0);
+
+const route = useRoute();
+const id = route.params.id;
+
 const fetchData = async () => {
-  const route = useRoute();
-  const id = route.params.id;
   const response = await api.get('/matches/' + id);
   const data = response.data.data;
   console.log(data);
@@ -22,9 +27,48 @@ const fetchData = async () => {
   awayTeam.value = data.away_team;
   events.value = data.events;
   league.value = data.league;
+  homeScore.value = data.home_score;
+  awayScore.value = data.away_score;
 }
 
-onMounted(fetchData);
+let channel = null;
+
+
+onMounted(()=> {
+  fetchData();
+
+    channel = echo.channel(`scoreboard`);
+
+    channel.listen("GoalScored", (data) => {
+      console.log("Goal Event Received:", data);
+      events.value.push(data);
+      homeScore.value = data.match_score.home;
+      awayScore.value = data.match_score.home;
+    });
+
+   channel.listen('FoulCommitted', (data) => {
+      events.value.push(data);
+    });
+
+    channel.listen('RedCardCommitted', (data) => {
+      events.value.push(data);
+    });
+
+    channel.listen('YellowCardCommitted', (data) => {
+      events.value.push(data);
+    });
+})
+
+// onUnmounted(() => {
+//     if (channel) {
+//         echo.leave(`match.${matchId}`);
+//         console.log("Leaving Channel");
+//     }
+// });
+
+// onMounted(fetchData);
+
+
 </script>
 
 <template>
@@ -32,7 +76,7 @@ onMounted(fetchData);
     <header class="py-3">
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-right text-bold">{{ league.name }}</h1>
-        <p class="text-grey-600 text-right text-sm mt-2 opacity-90">Date: {{ match.start_time }}</p>
+        <p class="text-grey-600 text-right text-sm mt-2 opacity-90">Started: {{ match.start_time }}</p>
       </div>
     </header>
 

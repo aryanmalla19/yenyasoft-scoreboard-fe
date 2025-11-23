@@ -19,12 +19,12 @@ const endMatch = (id) => {
     showCancelButton: true,
     confirmButtonColor: "#dc2626", // red-600
     cancelButtonColor: "#6b7280",  // gray-500
-    confirmButtonText: "Yes, delete it!"
+    confirmButtonText: "Yes, end the Match!"
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await api.delete(`/matches/${id}/end`);
+      await api.patch(`/matches/${id}/end`);
       Swal.fire("Deleted!", "Match has been ended.", "success");
-      emit('updated');
+    //   emit('updated');
     }
   });
 };
