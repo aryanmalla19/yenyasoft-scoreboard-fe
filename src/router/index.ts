@@ -10,6 +10,7 @@ import AdminTeamPage from '@/views/Admin/AdminTeamPage.vue';
 import AdminPlayerPage from '@/views/Admin/AdminPlayerPage.vue';
 import AdminMatchPage from '@/views/Admin/AdminMatchPage.vue';
 import AdminLiveMatchPage from '@/views/Admin/AdminLiveMatchPage.vue';
+import AdminLoginPage from '@/views/Admin/AdminLoginPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -82,6 +83,10 @@ const router = createRouter({
       children: [
         { path: '', name:'AdminMatchLive', component: AdminLiveMatchPage}
       ]
+    },
+    {
+      path: '/admin/login',
+      component: AdminLoginPage,
     }
   ]
 })

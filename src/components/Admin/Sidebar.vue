@@ -1,3 +1,10 @@
+<script setup>
+    const logout = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/';
+    }
+</script>
+
 <template>
     <aside class="w-64 bg-gradient-to-b from-gray-900 to-gray-800 text-white flex-shrink-0 shadow-2xl">
         <!-- Logo/Brand -->
@@ -56,9 +63,9 @@
                 </div>
                 <div class="flex-1">
                     <p class="font-medium text-sm text-white">Admin User</p>
-                    <p class="text-xs text-gray-400">admin@scoreboard.com</p>
+                    <p class="text-xs text-gray-400">admin@admin.com</p>
                 </div>
-                <button class="text-gray-400 hover:text-white transition">
+                <button @click="logout" class="text-gray-400 hover:text-white transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                     </svg>
