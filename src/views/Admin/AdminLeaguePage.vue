@@ -77,7 +77,7 @@ onMounted(fetchData);
               </span>
             </td>
             <td class="px-6 py-4 flex gap-3 justify-center">
-                <a :href="'/admin/leagues/'+league.slug+'/teams'" class="px-3 py-1.5 bg-pink-600 text-white rounded-lg text-xs shadow hover:bg-pink-700 transition">Teams</a>
+                <a :href="'/admin/leagues/'+league.slug" class="px-3 py-1.5 bg-pink-600 text-white rounded-lg text-xs shadow hover:bg-pink-700 transition">Manage</a>
 
                 <button @click="editLeague(league.slug)" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs shadow hover:bg-blue-700 transition">Edit</button>
 

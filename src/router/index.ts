@@ -51,7 +51,7 @@ const router = createRouter({
       ]
     },
     {
-      path: '/admin/leagues/:slug/teams',
+      path: '/admin/leagues/:slug',
       component: AdminLayout,
       meta: { requiresAuth: true},
       children: [

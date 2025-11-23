@@ -1,4 +1,5 @@
 <script setup>
+import CreateMatchModal from '@/components/Admin/CreateMatchModal.vue';
 import CreatePlayerModal from '@/components/Admin/CreatePlayerModal.vue';
 import CreateTeamModal from '@/components/Admin/CreateTeamModal.vue';
 import DeleteTeamModal from '@/components/Admin/DeleteTeamModal.vue';
@@ -9,8 +10,9 @@ import { useRoute } from 'vue-router';
 
 const teams = ref([]);
 const route = useRoute();
+const leagueSlug = route.params.slug;
+
 const fetchData = async () => {
-    const leagueSlug = route.params.slug;
     const response = await api.get(`/leagues/${leagueSlug}/teams`);
     console.log(response.data.data);
     teams.value = response.data.data;
@@ -32,13 +34,13 @@ onMounted(fetchData);
 </script>
 
 <template>
-    
   <div>
     <div class="flex justify-between items-center mb-6">
-      <h3 class="text-2xl font-semibold text-gray-800">Manage Teams</h3>
+      <h3 class="text-2xl font-semibold text-gray-800">Manage {{ leagueSlug.replace('-', " ") }} </h3>
         <div class="flex gap-x-5">
             <CreatePlayerModal :teams="teams" @updated="reloadData" />
             <CreateTeamModal @updated="reloadData" />
+            <CreateMatchModal :teams="teams" />
         </div>
     </div>
 
