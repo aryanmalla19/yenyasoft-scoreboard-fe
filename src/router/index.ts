@@ -9,6 +9,7 @@ import AdminLeaguePage from '@/views/Admin/AdminLeaguePage.vue';
 import AdminTeamPage from '@/views/Admin/AdminTeamPage.vue';
 import AdminPlayerPage from '@/views/Admin/AdminPlayerPage.vue';
 import AdminMatchPage from '@/views/Admin/AdminMatchPage.vue';
+import AdminLiveMatchPage from '@/views/Admin/AdminLiveMatchPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -72,6 +73,14 @@ const router = createRouter({
       meta: { requiresAuth: true},
       children: [
         { path: '', name:'AdminMatch', component: AdminMatchPage}
+      ]
+    },
+    {
+      path: '/admin/matches/:id/live',
+      component: AdminLayout,
+      meta: { requiresAuth: true},
+      children: [
+        { path: '', name:'AdminMatchLive', component: AdminLiveMatchPage}
       ]
     }
   ]

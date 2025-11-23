@@ -37,8 +37,14 @@ onMounted(fetchData);
         <tbody>
           <tr v-for="(match, index) in matches" :key="match.id" class="border-b hover:bg-gray-50 transition">
             <td class="px-6 py-4 font-medium">{{ index + 1 }}</td>
-            <td class="px-6 py-4">{{ match.home_team.name }}</td>
-            <td class="px-6 py-4">{{ match.away_team.name ?? 'N/A' }}</td>
+            <td class="px-6 py-4">
+                <!-- <img class="w-6" :src="match.home_team.logo" :alt="match.home_team.name + 'logo'"> -->
+                <p>{{ match.home_team.name }}</p>
+            </td>
+            <td class="px-6 py-4">
+                <!-- <img class="w-6" :src="match.away_team.logo" :alt="match.away_team.name + 'logo'"> -->
+                <p>{{ match.away_team.name ?? 'N/A' }}</p>
+            </td>
             <td class="px-6 py-4">{{ match.home_score ?? 'N/A'}} - {{ match.away_score }}</td>
             <td class="px-6 py-4">
               <span
