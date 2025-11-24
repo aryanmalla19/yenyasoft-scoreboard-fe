@@ -8,7 +8,7 @@
                 </div>
                 <nav class="flex gap-6">
                     <a href="/" class="hover:text-blue-200 transition font-medium">Home</a>
-                    <a href="/leagues" class="hover:text-blue-200 transition font-medium">Leagues</a>
+                    <!-- <a href="/leagues" class="hover:text-blue-200 transition font-medium">Leagues</a> -->
                 </nav>
             </div>
         </div>
