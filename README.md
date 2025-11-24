@@ -37,4 +37,4 @@ cp .env.example .env
 npm run serve
 ```
 
-This will start the development server. You can access the application at `http://localhost:8080` by default.
+This will start the development server. You can access the application at `http://localhost:5173` by default. For Admin Login, please visit at `http://localhost:5173/admin/login`
