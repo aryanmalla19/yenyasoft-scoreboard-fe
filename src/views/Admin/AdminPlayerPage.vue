@@ -41,7 +41,7 @@ onMounted(fetchData);
           <tr>
             <th class="px-6 py-3">SN</th>
             <th class="px-6 py-3">Name</th>
-            <th class="px-6 py-3">Image</th>
+            <th class="px-6 py-3">Photo</th>
             <th class="px-6 py-3">Team</th>
             <th class="px-6 py-3">Total Goals</th>
             <th class="px-6 py-3">Total Fouls</th>
