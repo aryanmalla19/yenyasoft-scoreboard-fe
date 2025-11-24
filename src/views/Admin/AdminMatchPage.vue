@@ -58,15 +58,12 @@ onMounted(fetchData);
 
             <td class="px-6 py-4">
               <span
-                :class="[
-                  'px-3 py-1 text-xs rounded-full font-semibold',
+                :class="['px-3 py-1 text-xs rounded-full font-semibold',
                   match.status === 'Finished'
                     ? 'bg-red-100 text-red-700'
                     : match.status === 'Live'
                       ? 'bg-green-100 text-green-700'
-                      : 'bg-yellow-100 text-yellow-700'
-                ]"
-              >
+                      : 'bg-yellow-100 text-yellow-700']">
                 {{ match.status }}
               </span>
             </td>

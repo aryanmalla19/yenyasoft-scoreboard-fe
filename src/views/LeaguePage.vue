@@ -18,7 +18,8 @@ const fetchData = async (slug) => {
         console.log(response.data.data);
         league.value = response.data.data;
         standings.value = response.data.data.teams;
-        recentMatches.value = league.matches;
+        recentMatches.value = response.data.data?.matches;
+        console.log(recentMatches.value);
     }catch(error){
         console.log(error);
     }
