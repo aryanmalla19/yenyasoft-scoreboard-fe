@@ -6,6 +6,8 @@ import { toast } from 'vue-sonner';
 
 const showCreateModal = ref(false);
 
+const emit = defineEmits(['refresh']);
+
 const props = defineProps({
     players: {
         type: Array,
@@ -40,6 +42,7 @@ const submitForm = async () => {
             player_id: null,
             value: 1,
         };
+        emit('refresh');
     } catch (error) {
         console.error(error);
         toast.error(error?.response?.data?.message ?? 'Some error occurred');

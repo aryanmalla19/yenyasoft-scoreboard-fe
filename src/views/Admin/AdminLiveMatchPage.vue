@@ -47,6 +47,8 @@ const halftimeEnd = async () => {
     }
 }
 
+const emit = defineEmits(['refresh']);
+
 onMounted(fetchData);
 </script>
 
@@ -113,7 +115,7 @@ onMounted(fetchData);
                 </h4>
                 <div class="flex flex-col">
                     <div class="flex">
-                        <GoalScoredModal :matchId="matchId" :players="totalPlayers" />
+                        <GoalScoredModal @refresh="fetchData" :matchId="matchId" :players="totalPlayers" />
                         <button @click="halftimeStart" className="flex-1 bg-gray-600 hover:bg-gray-700 text-white px-5 border border-border text-foreground py-2.5 rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors">
                             Start Halftime
                         </button>
@@ -122,9 +124,9 @@ onMounted(fetchData);
                         </button>
                     </div>
                     <div class="flex">
-                        <CommittedFoulModal :matchId="matchId" :players="totalPlayers" />
-                        <CommittedRedCardModal :matchId="matchId" :players="totalPlayers" />
-                        <CommittedYellowCardModal :matchId="matchId" :players="totalPlayers" />
+                        <CommittedFoulModal @refresh="fetchData" :matchId="matchId" :players="totalPlayers" />
+                        <CommittedRedCardModal @refresh="fetchData" :matchId="matchId" :players="totalPlayers" />
+                        <CommittedYellowCardModal @refresh="fetchData" :matchId="matchId" :players="totalPlayers" />
                     </div>
                 </div>
               </div>
