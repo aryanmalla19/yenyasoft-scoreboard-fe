@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -8,14 +8,17 @@ const email = ref('');
 const password = ref('');
 const loading = ref(false);
 const errorMessage = ref('');
-    
+
+// Getting API_URL without /api from .env file
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL.slice(0, -4);
+
 const login = async () => {
   loading.value = true;
   errorMessage.value = '';
 
   try {
     const api = axios.create({
-      baseURL: "http://localhost:8000",
+      baseURL: API_BASE_URL,
       withCredentials: true,
         xsrfCookieName: 'XSRF-TOKEN',
         xsrfHeaderName: 'X-XSRF-TOKEN',
@@ -42,6 +45,15 @@ const login = async () => {
     loading.value = false;
   }
 };
+
+const isLoggedIn = () => {
+  const token = localStorage.getItem("token");
+  if(token){
+      window.location.href = '/admin/dashboard';
+  }
+}
+
+onMounted(isLoggedIn);
 </script>
 
 <template>
