@@ -4,7 +4,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-3">
                     <img class="w-[50px]" src="/logo.png" alt="yenyasoft-scoreboard-logo">
-                    <h1 class="text-3xl font-bold">Scoreboard</h1>
+                    <h1 class="text-3xl font-semibold">YenyaScore</h1>
                 </div>
                 <nav class="flex gap-6">
                     <a href="/" class="hover:text-blue-200 transition font-medium">Home</a>

@@ -17,7 +17,10 @@ const props = defineProps({
               {{ event.type === 'goal' ? '⚽' : event.type === 'red_card' ? '🟥' : '🟨' }} 
               {{ event.type }}
           </p>
-          <p class="text-gray-700">{{ event.player?.name ?? 'N/A' }} </p>
+          <div class="flex gap-3">
+              <img class="w-10 rounded-md" :src="event.player.image" alt="Player Image">
+              <p class="text-gray-700">{{ event.player?.name ?? 'N/A' }} ({{ event?.team?.name }})</p>
+          </div>
       </div>
   </div>
 </template>

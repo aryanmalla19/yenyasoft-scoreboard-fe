@@ -3,7 +3,8 @@ import api from '@/plugins/axios';
 import MatchEvent from '@/components/MatchEvent.vue';
 import { useRoute } from 'vue-router';
 import echo from '@/plugins/echo';
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, onUnmounted, ref, watch } from 'vue';
+import { toast } from 'vue-sonner';
 
 const homeTeam = ref({});
 const awayTeam = ref({});
@@ -40,10 +41,11 @@ onMounted(()=> {
     channel = echo.channel(`scoreboard`);
 
     channel.listen("GoalScored", (data) => {
-      console.log("Goal Event Received:", data);
+      console.log(data,"GOAL");
       events.value.push(data);
       homeScore.value = data.match_score.home;
-      awayScore.value = data.match_score.home;
+      awayScore.value = data.match_score.away;
+      toast.info(`GOALLLL !! ${data.player.name} scored a goal (${data.team.name})`);
     });
 
    channel.listen('FoulCommitted', (data) => {
@@ -57,17 +59,19 @@ onMounted(()=> {
     channel.listen('YellowCardCommitted', (data) => {
       events.value.push(data);
     });
+
+    channel.listen("MatchEnded", (data) => {
+      toast.info(`Match has ended with ${ data.match.home_team.name + ' ' + data.match.home_score} - ${data.match.away_score + ' ' + data.match.away_team.name}`);
+      // window.location.href = "";
+    })
 })
 
-// onUnmounted(() => {
-//     if (channel) {
-//         echo.leave(`match.${matchId}`);
-//         console.log("Leaving Channel");
-//     }
-// });
-
-// onMounted(fetchData);
-
+onUnmounted(() => {
+  if (channel) {
+    echo.leave(`scoreboard`);
+    channel = null;
+  }
+});
 
 </script>
 
@@ -86,7 +90,7 @@ onMounted(()=> {
           <h2 class="text-lg">{{ homeTeam.name }}</h2>
           <img :src="homeTeam.logo" alt="Manchester United Logo" class="mx-auto w-36 h-36 object-contain">
         </div>
-        <div class="text-3xl font-extrabold text-gray-800">{{ match.home_score }} - {{ match.away_score }}</div>
+        <div class="text-3xl font-extrabold text-gray-800">{{ homeScore }} - {{ awayScore }}</div>
         <div class="text-center">
           <h2 class="text-lg">{{ awayTeam.name }}</h2>
           <img :src="awayTeam.logo" alt="Liverpool Logo" class="mx-auto w-36 h-36 object-contain">

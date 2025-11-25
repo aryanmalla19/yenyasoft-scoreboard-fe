@@ -8,8 +8,6 @@ const props = defineProps({
         default: () => [],
     }
 })
-
-
 </script>
 
 <template>
