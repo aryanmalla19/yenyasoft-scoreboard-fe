@@ -36,7 +36,7 @@ const props = defineProps({
             <span class="text-red-600 font-bold text-lg">{{ team.total_losses ?? 0 }}</span>
         </td>
         <td class="px-6 py-5 text-center">
-            <span class="text-blue-600 font-bold text-lg">{{ team.total_goals ?? 0 }}</span>
+            <span class="text-blue-600 font-bold text-lg">{{ team.total_score ?? 0 }}</span>
         </td>
         <td class="px-6 py-5 text-center">
             <div class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold text-lg px-4 py-2 rounded-lg shadow-md">

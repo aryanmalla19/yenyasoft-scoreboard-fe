@@ -73,6 +73,9 @@ const submitForm = async () => {
     emit("updated");
     showCreateModal.value = false;
     toast.success("Successfully started a match!");
+    setTimeout(()=> {
+      window.localStorage.href = '/admin/matches';
+    }, 2000);
   } catch (error) {
     toast.error(error.response?.data?.message ?? "Some error occurred");
   }
