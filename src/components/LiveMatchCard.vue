@@ -20,7 +20,7 @@
             </div>
             <div class="mx-6 text-center">
                 <div class="text-3xl font-bold text-gray-800">{{ match.home_score}} - {{ match.away_score }}</div>
-                <div class="text-sm font-semibold text-red-500 mt-1">65:23</div>
+                <div class="text-sm font-semibold text-red-500 mt-1">{{ match.start_time }}</div>
             </div>
             <div class="flex-1 flex flex-col items-center">
                 <img class="w-[100px]" :src="match.away_team.logo" alt="club_logo">

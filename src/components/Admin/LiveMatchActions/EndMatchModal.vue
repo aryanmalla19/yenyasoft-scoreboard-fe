@@ -24,7 +24,9 @@ const endMatch = (id) => {
     if (result.isConfirmed) {
       await api.patch(`/matches/${id}/end`);
       Swal.fire("Deleted!", "Match has been ended.", "success");
-    //   emit('updated');
+      setTimeout(()=> {
+        window.location.href = '/admin/matches';
+      }, 5000);
     }
   });
 };

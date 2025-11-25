@@ -59,6 +59,7 @@ const submitForm = async () => {
     form.value.start_time = now.toISOString().slice(0, 16);
     const end = new Date(now.getTime() + (90 * 60000));
     form.value.end_time = end.toISOString().slice(0, 16);
+    fd.append("is_live", true);
   }
 
   fd.append("start_time", form.value.start_time);

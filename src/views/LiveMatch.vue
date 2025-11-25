@@ -41,7 +41,6 @@ onMounted(()=> {
     channel = echo.channel(`scoreboard`);
 
     channel.listen("GoalScored", (data) => {
-      console.log(data,"GOAL");
       events.value.push(data);
       homeScore.value = data.match_score.home;
       awayScore.value = data.match_score.away;
@@ -55,7 +54,7 @@ onMounted(()=> {
     channel.listen('RedCardCommitted', (data) => {
       events.value.push(data);
     });
-
+    
     channel.listen('YellowCardCommitted', (data) => {
       events.value.push(data);
     });

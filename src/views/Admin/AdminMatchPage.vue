@@ -70,10 +70,10 @@ onMounted(fetchData);
 
             <td class="px-6 py-4 flex gap-3 justify-center">
               <div class="relative group inline-block">
-                <a :href="match.status === 'Live' ? '/admin/matches/' + match.id + '/live' : null"
+                <a :href="match.status === 'Live' || match.status === 'Halftime' ? '/admin/matches/' + match.id + '/live' : null"
                   :class="[
                     'px-3 py-1.5 rounded-lg text-xs shadow transition',
-                    match.status === 'Live'
+                    match.status === 'Live' || match.status === 'Halftime'
                       ? 'bg-pink-600 text-white hover:bg-pink-700 cursor-pointer'
                       : 'bg-gray-400 text-gray-200 cursor-not-allowed pointer-events-none']">
                   Manage
